@@ -71,7 +71,7 @@ const config: DocsThemeConfig = {
     const image = openGraph({
       description:
         frontMatter.description ||
-        "Mattummal's Manuals about practices on development",
+        "Mattummal's Manuals: The Insider's Guide to Ace Development Practices!",
       siteName: 'manual.mattummal.com',
       templateTitle: title || "Mattummal's Manuals",
     })
@@ -85,7 +85,7 @@ const config: DocsThemeConfig = {
         <meta property="og:site_name" content="Mattummal's Manuals" />
         <meta
           name="og:description"
-          content="Rab Mattummal’s documentation about practices on development"
+          content="Mattummal's Manuals: The Insider's Guide to Ace Development Practices!"
         />
         <meta name="image" property="og:image" content={image} />
 
@@ -100,7 +100,7 @@ const config: DocsThemeConfig = {
         <meta httpEquiv="Content-Language" content="en" />
         <meta
           name="description"
-          content="Rab Mattummal’s documentation about practices on development"
+          content="Mattummal's Manuals: The Insider's Guide to Ace Development Practices!"
         />
         <meta
           name="apple-mobile-web-app-title"
