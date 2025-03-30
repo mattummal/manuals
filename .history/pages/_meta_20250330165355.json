@@ -1,6 +1,5 @@
 {
   "index": "Introduction",
-  "automotive": "Automotive",
   "commit": "Commit Message",
   "styling": "Styling",
   "react": "React",
@@ -10,6 +9,7 @@
   "mac": "Mac Setup",
   "uncategorized": "Uncategorized Notes",
   "attribution": "Attribution",
+  "automotuve": "Automotive",
   "contact": {
     "title": "Contact ↗",
     "type": "page",
