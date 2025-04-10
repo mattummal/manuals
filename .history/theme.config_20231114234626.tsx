@@ -24,7 +24,7 @@ const config: DocsThemeConfig = {
   chat: {
     link: 'https://twitter.com/prbhjyth',
     icon: (
-
+      
       <svg
         width="24"
         height="24"
@@ -50,7 +50,7 @@ const config: DocsThemeConfig = {
           target="_blank"
           rel="noopener"
         >
-          rab
+          Rab Mattummal
         </a>
         . Made with{' '}
         <a
@@ -61,7 +61,6 @@ const config: DocsThemeConfig = {
         >
           Nextra
         </a>
-        .
       </p>
     ),
   },

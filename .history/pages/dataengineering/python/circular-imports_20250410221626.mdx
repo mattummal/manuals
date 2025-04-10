@@ -1,0 +1,104 @@
+# Circular Imports in Python: Causes, Issues, and Solutions
+
+```mdx
+## What Are Circular Imports?
+
+Circular imports occur when two or more Python modules depend on each other, either directly or indirectly. This creates a loop in the import chain that can lead to problems during module initialization.
+
+### Example of a Circular Import
+
+```python
+# module_a.py
+from module_b import some_function
+
+def a_function():
+    return some_function()
+
+# module_b.py
+from module_a import a_function
+
+def some_function():
+    return a_function()
+```
+
+## Why Circular Imports Happen
+
+Circular imports typically occur when:
+1. Related functionality is split across multiple modules
+2. There's tight coupling between components
+3. The architecture isn't properly layered
+4. Modules have mutual dependencies
+
+## Problems Caused by Circular Imports
+
+1. **Import Errors**: `AttributeError` or `ImportError` when attributes aren't yet available
+2. **Initialization Issues**: Modules may be in a partially initialized state
+3. **Maintenance Challenges**: Harder to understand and modify code
+4. **Testing Difficulties**: Complex dependencies make testing harder
+
+## Common Solutions
+
+### 1. Restructure Your Code
+
+The best solution is often to reorganize your code to remove the circular dependency:
+
+```python
+# Move shared functionality to a third module (module_common.py)
+# Have both modules import from the common module instead of each other
+```
+
+### 2. Import Inside Functions
+
+Delay the import until the function is called:
+
+```python
+# module_a.py
+def a_function():
+    from module_b import some_function  # Local import
+    return some_function()
+```
+
+### 3. Use Forward References (Type Hints)
+
+For type annotations, you can use string literals or `from __future__ import annotations`:
+
+```python
+# module_b.py
+from __future__ import annotations
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from module_a import AClass
+
+def some_function(param: 'AClass') -> None: ...
+```
+
+### 4. Import at Module Level After Definition
+
+Define your functions/classes first, then import:
+
+```python
+# module_a.py
+def a_function():
+    return some_function()
+
+from module_b import some_function  # Import after definition
+```
+
+## Best Practices to Avoid Circular Imports
+
+1. Follow the **Dependency Inversion Principle** (depend on abstractions)
+2. Use **dependency injection** when possible
+3. Create a clear **module hierarchy**
+4. Consider using **interfaces** or **ABCs** to break direct dependencies
+5. Keep module responsibilities focused and single-purpose
+
+## When Circular Imports Might Be Acceptable
+
+In some cases, circular imports can work if:
+- The circularity doesn't affect module initialization
+- The imports are only used for type checking
+- The circularity is managed carefully with local imports
+
+However, it's generally better to restructure your code to avoid them entirely.
+```

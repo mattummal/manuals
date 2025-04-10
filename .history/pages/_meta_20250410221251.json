@@ -1,16 +1,17 @@
 {
   "index": "Introduction",
   "automotive": "Automotive",
+  "commit": "Commit Message",
   "dataengineering": "Data Engineering",
-  "languages": "Languages",
   "github": "GitHub",
   "libraries": "Libraries",
   "dotfiles": "VSCode Extensions",
-  "unix": "Unix",
+  "mac": "Mac Setup",
+  "attribution": "Attribution",
   "contact": {
     "title": "Contact ↗",
     "type": "page",
-    "href": "https://rab.al",
+    "href": "https://19091999.xyz",
     "newWindow": true
   }
 }

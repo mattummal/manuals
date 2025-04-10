@@ -7,10 +7,11 @@
   "libraries": "Libraries",
   "dotfiles": "VSCode Extensions",
   "unix": "Unix",
+  "attribution": "Attribution",
   "contact": {
     "title": "Contact ↗",
     "type": "page",
-    "href": "https://rab.al",
+    "href": "https://19091999.xyz",
     "newWindow": true
   }
 }

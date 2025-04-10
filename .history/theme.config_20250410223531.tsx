@@ -50,7 +50,7 @@ const config: DocsThemeConfig = {
           target="_blank"
           rel="noopener"
         >
-          rab
+          rab.al
         </a>
         . Made with{' '}
         <a
