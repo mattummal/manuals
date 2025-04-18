@@ -1,0 +1,248 @@
+
+# **Scala Data Wrangling Cheat Sheet**
+
+---
+
+## **1. Importing Libraries**
+```scala
+// Import required libraries for normal Scala
+import scala.collection.mutable
+import scala.collection.immutable
+
+// For Apache Spark (if needed)
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions._
+```
+
+---
+
+## **2. Creating and Loading Data**
+
+### **Normal Scala**
+```scala
+// Create a List
+val data = List(1, 2, 3, 4, 5)
+
+// Create a Map
+val mapData = Map("a" -> 1, "b" -> 2, "c" -> 3)
+
+// Create a 2D List (like a table)
+val table = List(
+  List("Name", "Age", "City"),
+  List("Alice", "25", "New York"),
+  List("Bob", "30", "San Francisco")
+)
+
+// Reading files
+import scala.io.Source
+val lines = Source.fromFile("file.txt").getLines.toList
+```
+
+### **Apache Spark**
+```scala
+val spark = SparkSession.builder()
+  .appName("Data Wrangling Cheat Sheet")
+  .getOrCreate()
+
+// Load CSV
+val df = spark.read.option("header", "true").csv("file.csv")
+
+// Load JSON
+val df = spark.read.json("file.json")
+```
+
+---
+
+## **3. Inspecting Data**
+
+### **Normal Scala**
+```scala
+// Inspect Lists
+data.head            // First element
+data.tail            // All elements except the first
+data.take(3)         // First 3 elements
+data.length          // Number of elements
+
+// Inspect Maps
+mapData.keys         // Get all keys
+mapData.values       // Get all values
+mapData.get("a")     // Get value for key "a"
+
+// Inspect 2D Lists
+table.foreach(println)  // Print each row
+```
+
+### **Apache Spark**
+```scala
+df.show()            // Show the first 20 rows
+df.printSchema()     // Print the schema of the DataFrame
+df.columns           // Get column names
+df.count()           // Count the number of rows
+```
+
+---
+
+## **4. Selecting and Filtering Data**
+
+### **Normal Scala**
+```scala
+// Filter a List
+val filtered = data.filter(_ > 3)        // Elements greater than 3
+
+// Map Transformation
+val squared = data.map(x => x * x)      // Square each element
+
+// Filter a 2D List
+val filteredTable = table.filter(row => row(1) != "25")  // Remove rows where Age = 25
+```
+
+### **Apache Spark**
+```scala
+// Select Columns
+df.select("column_name").show()
+
+// Filter Rows
+df.filter($"column" > 10).show()
+df.filter($"column" === "value").show()
+```
+
+---
+
+## **5. Sorting and Reordering**
+
+### **Normal Scala**
+```scala
+// Sort a List
+val sorted = data.sorted                // Ascending order
+val descending = data.sortWith(_ > _)   // Descending order
+
+// Reorder Map (convert to List first)
+val reordered = mapData.toList.sortBy(_._2)  // Sort by values
+```
+
+### **Apache Spark**
+```scala
+// Sort Rows
+df.orderBy("col1").show()
+df.orderBy($"col1".desc).show()
+```
+
+---
+
+## **6. Aggregating and Grouping**
+
+### **Normal Scala**
+```scala
+// Aggregations on List
+val sum = data.sum          // Sum of elements
+val avg = data.sum / data.size.toDouble  // Average
+
+// Grouping
+val grouped = data.groupBy(_ % 2)  // Group by even/odd
+```
+
+### **Apache Spark**
+```scala
+// Group By and Aggregation
+df.groupBy("col1").count().show()
+df.groupBy("col1").agg(avg("col2"), max("col3")).show()
+```
+
+---
+
+## **7. Transforming Data**
+
+### **Normal Scala**
+```scala
+// Add new elements to List
+val extended = data :+ 6       // Append 6 to the List
+val prepended = 0 +: data      // Prepend 0 to the List
+
+// Replace elements in List
+val replaced = data.map(x => if (x == 3) 99 else x)  // Replace 3 with 99
+
+// String Operations
+val strings = List("apple", "banana", "cherry")
+val uppercased = strings.map(_.toUpperCase)
+val filteredStrings = strings.filter(_.contains("a"))
+```
+
+### **Apache Spark**
+```scala
+// Add or Modify Columns
+df.withColumn("new_col", $"col1" * 2).show()
+df.withColumn("col1_upper", upper($"col1")).show()
+```
+
+---
+
+## **8. Merging and Joining**
+
+### **Normal Scala**
+```scala
+// Combine Lists
+val combined = data ++ List(6, 7, 8)   // Concatenate two Lists
+
+// Merge Maps
+val mergedMap = mapData ++ Map("d" -> 4, "e" -> 5)  // Add new key-value pairs
+```
+
+### **Apache Spark**
+```scala
+// Inner Join
+val joined = df1.join(df2, Seq("key"), "inner")
+joined.show()
+
+// Union
+val unioned = df1.union(df2)
+unioned.show()
+```
+
+---
+
+## **9. Advanced Data Reshaping**
+
+### **Normal Scala**
+```scala
+// Transpose a 2D List
+val transposed = table.transpose
+
+// Flatten a Nested List
+val nested = List(List(1, 2), List(3, 4), List(5))
+val flattened = nested.flatten
+```
+
+### **Apache Spark**
+```scala
+// Melting (Wide to Long)
+val melted = df.selectExpr("id", "stack(2, 'col1', col1, 'col2', col2) as (variable, value)")
+melted.show()
+
+// Pivoting (Long to Wide)
+val pivoted = df.groupBy("id").pivot("variable").agg(first("value"))
+pivoted.show()
+```
+
+---
+
+## **10. Debugging and Quick Checks**
+
+### **Normal Scala**
+```scala
+// Check for Duplicates in a List
+val duplicates = data.groupBy(identity).filter(_._2.size > 1).keys
+
+// Check Memory Usage
+println(s"List size: ${data.size}")
+```
+
+### **Apache Spark**
+```scala
+// Check for Duplicates
+df.groupBy("col1").count().filter($"count" > 1).show()
+
+// Schema Validation
+df.schema.fields.foreach(println)
+```
+
+---
