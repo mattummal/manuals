@@ -1,0 +1,289 @@
+
+# **Python Data Wrangling Cheat Sheet**
+
+---
+
+## **1. Importing Libraries and Loading Data**
+
+### **Pandas**
+```python
+import pandas as pd
+
+# Load CSV
+df = pd.read_csv("file.csv")
+
+# Load Excel
+df = pd.read_excel("file.xlsx")
+
+# Load JSON
+df = pd.read_json("file.json")
+```
+
+### **Polars**
+```python
+import polars as pl
+
+# Load CSV
+df = pl.read_csv("file.csv")
+
+# Load JSON
+df = pl.read_json("file.json")
+```
+
+### **Apache Spark**
+```python
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName("Data Wrangling").getOrCreate()
+
+# Load CSV
+df = spark.read.option("header", "true").csv("file.csv")
+
+# Load JSON
+df = spark.read.json("file.json")
+```
+
+---
+
+## **2. Quick Data Inspection**
+
+### **Pandas**
+```python
+df.head()          # First 5 rows
+df.info()          # Summary of the DataFrame
+df.describe()      # Summary statistics
+df.columns         # List of column names
+df.shape           # Dimensions of the DataFrame
+```
+
+### **Polars**
+```python
+df.head(5)         # First 5 rows
+df.schema          # Schema of the DataFrame
+df.describe()      # Summary statistics
+df.columns         # List of column names
+df.shape           # Dimensions of the DataFrame
+```
+
+### **Apache Spark**
+```python
+df.show()          # First 20 rows
+df.printSchema()   # Schema of the DataFrame
+df.describe().show()  # Summary statistics
+df.columns         # List of column names
+df.count()         # Number of rows
+```
+
+---
+
+## **3. Selecting and Filtering Data**
+
+### **Pandas**
+```python
+# Selecting Columns
+df["column_name"]          # Single column
+df[["col1", "col2"]]       # Multiple columns
+
+# Filtering Rows
+df[df["column"] > 10]      # Rows where column > 10
+df[(df["col1"] > 10) & (df["col2"] < 5)]  # Multiple conditions
+```
+
+### **Polars**
+```python
+# Selecting Columns
+df.select("column_name")   # Single column
+df.select(["col1", "col2"])  # Multiple columns
+
+# Filtering Rows
+df.filter(pl.col("column") > 10)  # Rows where column > 10
+df.filter((pl.col("col1") > 10) & (pl.col("col2") < 5))  # Multiple conditions
+```
+
+### **Apache Spark**
+```python
+# Selecting Columns
+df.select("column_name").show()  # Single column
+df.select("col1", "col2").show()  # Multiple columns
+
+# Filtering Rows
+df.filter(df["column"] > 10).show()  # Rows where column > 10
+df.filter((df["col1"] > 10) & (df["col2"] < 5)).show()  # Multiple conditions
+```
+
+---
+
+## **4. Cleaning and Handling Missing Data**
+
+### **Pandas**
+```python
+# Drop Missing Values
+df.dropna()                 # Drop rows with missing values
+
+# Fill Missing Values
+df.fillna(0)                # Replace missing values with 0
+
+# Replace Values
+df.replace("old_value", "new_value")
+```
+
+### **Polars**
+```python
+# Drop Missing Values
+df.drop_nulls()
+
+# Fill Missing Values
+df.fill_null(0)
+
+# Replace Values
+df.with_column(
+    pl.when(pl.col("col1") == "old_value").then("new_value").otherwise(pl.col("col1"))
+)
+```
+
+### **Apache Spark**
+```python
+# Drop Missing Values
+df.na.drop()
+
+# Fill Missing Values
+df.na.fill(0)
+
+# Replace Values
+df.withColumn("col1", when(df["col1"] == "old_value", "new_value").otherwise(df["col1"]))
+```
+
+---
+
+## **5. Transforming Data**
+
+### **Pandas**
+```python
+# Add New Column
+df["new_col"] = df["col1"] * 2
+
+# Rename Columns
+df.rename(columns={"old_name": "new_name"}, inplace=True)
+
+# String Operations
+df["col1"].str.upper()
+```
+
+### **Polars**
+```python
+# Add New Column
+df.with_column((pl.col("col1") * 2).alias("new_col"))
+
+# Rename Columns
+df.rename({"old_name": "new_name"})
+
+# String Operations
+df.with_column(pl.col("col1").str.to_uppercase())
+```
+
+### **Apache Spark**
+```python
+# Add New Column
+df.withColumn("new_col", df["col1"] * 2)
+
+# Rename Columns
+df.withColumnRenamed("old_name", "new_name")
+
+# String Operations
+df.withColumn("col1_upper", upper(df["col1"]))
+```
+
+---
+
+## **6. Aggregating and Grouping**
+
+### **Pandas**
+```python
+# Group By
+df.groupby("col1").mean()
+
+# Aggregation
+df.groupby("col1").agg({"col2": "sum", "col3": "max"})
+```
+
+### **Polars**
+```python
+# Group By
+df.groupby("col1").agg(pl.col("col2").mean())
+
+# Aggregation
+df.groupby("col1").agg([pl.col("col2").sum(), pl.col("col3").max()])
+```
+
+### **Apache Spark**
+```python
+# Group By
+df.groupBy("col1").mean().show()
+
+# Aggregation
+df.groupBy("col1").agg({"col2": "sum", "col3": "max"}).show()
+```
+
+---
+
+## **7. Merging and Joining**
+
+### **Pandas**
+```python
+# Merge
+pd.merge(df1, df2, on="key")
+
+# Concatenate
+pd.concat([df1, df2])
+```
+
+### **Polars**
+```python
+# Join
+df1.join(df2, on="key")
+
+# Concatenate
+pl.concat([df1, df2])
+```
+
+### **Apache Spark**
+```python
+# Join
+df1.join(df2, on="key", how="inner").show()
+
+# Union
+df1.union(df2).show()
+```
+
+---
+
+## **8. Exporting Data**
+
+### **Pandas**
+```python
+# Save to CSV
+df.to_csv("output.csv", index=False)
+
+# Save to Excel
+df.to_excel("output.xlsx", index=False)
+```
+
+### **Polars**
+```python
+# Save to CSV
+df.write_csv("output.csv")
+
+# Save to JSON
+df.write_json("output.json")
+```
+
+### **Apache Spark**
+```python
+# Save to CSV
+df.write.option("header", "true").csv("output.csv")
+
+# Save to Parquet
+df.write.parquet("output.parquet")
+```
+
+---
