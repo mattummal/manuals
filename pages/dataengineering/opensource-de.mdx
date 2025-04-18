@@ -19,24 +19,25 @@ By 2025, the data engineering ecosystem will undergo a paradigm shift driven by 
 - **IoT Expansion**: 55B connected devices generating 80 ZB of data annually (Cisco, 2025)
 - **AI Demands**: 92% of ML models require sub-100ms inference latency
 
-**Dominant Stack**  
+**Dominant Stack**
+
 ```mermaid
 graph LR
   A[Sources] --> B{Stream Ingestion}
   B --> C[Processing]
   C --> D[Storage]
   D --> E[Consumption]
-  
+
   subgraph Ingestion Layer
     B --> F[Apache Pulsar]
     B --> G[Redpanda]
   end
-  
+
   subgraph Processing Layer
     C --> H[Apache Flink]
     C --> I[RisingWave]
   end
-  
+
   subgraph Storage Layer
     D --> J[Apache Iceberg]
     D --> K[Delta Lake]
@@ -44,14 +45,15 @@ graph LR
 ```
 
 **Emerging Challengers**  
-- **RisingWave**: SQL-native streaming engine with 58% faster checkpointing vs Flink
-- **Materialize**: Incremental materialized views for real-time analytics
+- **RisingWave**: SQL-native streaming engine with 58% faster checkpointing vs Flink  
+- **Materialize**: Incremental materialized views for real-time analytics  
 - **Timeplus**: Edge-native stream processing for IoT use cases
 
 ---
 
 ### 2. AI-Native Data Stacks
 #### Feature Store Evolution
+
 | Feature          | Feast       | Hopsworks   | Vertex      |
 |------------------|-------------|-------------|-------------|
 | Latency          | <50ms       | <100ms      | <10ms       |
@@ -72,7 +74,9 @@ graph LR
 ---
 
 ### 3. Data Mesh 2.0: From Theory to Practice
-**Maturity Framework**  
+
+**Maturity Framework**
+
 ```mermaid
 journey
   title Data Mesh Adoption Journey
@@ -88,13 +92,15 @@ journey
     Monetization: 5: Enterprise
 ```
 
-**Critical Components**  
-1. **Data Product Contracts**  
-   - Schema-as-Code (protobuf/avro)
-   - SLA guarantees (99.9% uptime)
-   - Lineage tracking (OpenLineage)
+**Critical Components**
 
-2. **Self-Serve Infrastructure**  
+1. **Data Product Contracts**  
+   - Schema-as-Code (protobuf/avro)  
+   - SLA guarantees (99.9% uptime)  
+   - Lineage tracking (OpenLineage)  
+
+2. **Self-Serve Infrastructure**
+
    ```python
    # Example Data Product CLI
    data-product create \
@@ -105,8 +111,8 @@ journey
    ```
 
 3. **Federated Query Engines**  
-   - Trino/Presto with cross-domain security policies
-   - Apache Arrow Flight SQL for high-performance transport
+   - Trino/Presto with cross-domain security policies  
+   - Apache Arrow Flight SQL for high-performance transport  
 
 ---
 
@@ -114,6 +120,7 @@ journey
 
 ### Ingestion & Transformation
 #### Batch vs Streaming Feature Matrix
+
 | Tool          | Batch   | Stream  | CDC     | Cloud-Native | 2025 Outlook |
 |---------------|---------|---------|---------|--------------|--------------|
 | Airbyte       | ✓       | Partial | ✓       | ✓            | Leader       |
@@ -124,7 +131,9 @@ journey
 ---
 
 ### Processing Engines
-**Streaming SQL Showdown**  
+
+**Streaming SQL Showdown**
+
 ```sql
 /* Flink vs RisingWave: Clickstream Analysis */
 WITH user_sessions AS (
@@ -151,16 +160,18 @@ GROUP BY window_end;
 ---
 
 ### Storage Layer Innovations
+
 **Table Format Wars**  
-{/* ![Table Format Adoption](path/to/table-format-growth.png) */}
+{/* ![Table Format Adoption](path/to/table-format-growth.png) */}  
 
 | Format       | Key Differentiator                     | Best For                   | Limitations              |
-|--------------|----------------------------------------|---------------------------|--------------------------|
+|--------------|----------------------------------------|----------------------------|--------------------------|
 | Apache Iceberg | Time travel + schema evolution        | Analytical workloads       | Complex setup            |
-| Delta Lake   | ACID transactions + Z-Ordering        | ML pipelines              | Vendor lock-in risks     |
-| Hudi         | Incremental processing + CDC          | IoT streams               | Smaller community        |
+| Delta Lake   | ACID transactions + Z-Ordering         | ML pipelines               | Vendor lock-in risks     |
+| Hudi         | Incremental processing + CDC           | IoT streams                | Smaller community        |
 
-**Vector DB Architectures**  
+**Vector DB Architectures**
+
 ```mermaid
 flowchart TD
   A[Client] --> B[API Gateway]
@@ -179,18 +190,21 @@ flowchart TD
 ## Operational Challenges & Mitigations
 
 ### Critical Pain Points
+
 1. **Tool Sprawl**  
-   - Average org uses 14.7 data tools (2024 State of Data Eng Report)
-   - 63% report integration costs exceeding $2M/year
+   - Average org uses 14.7 data tools (2024 State of Data Eng Report)  
+   - 63% report integration costs exceeding $2M/year  
 
 2. **Skill Gaps**  
-   - 58% of hiring managers struggle to find streaming experts
-   - 72% teams lack data product management skills
+   - 58% of hiring managers struggle to find streaming experts  
+   - 72% teams lack data product management skills  
 
 3. **Security Risks**  
-   - 41% of data breaches originate from pipeline vulnerabilities
+   - 41% of data breaches originate from pipeline vulnerabilities  
 
 ### Strategic Solutions
+
+{/* 
 <Grid columns={2}>
   <Card severity="high" title="Tool Consolidation">
     - Adopt unified platforms like Apache Beam + Spark  
@@ -207,17 +221,22 @@ flowchart TD
       - Data mesh simulation labs
   </Card>
 </Grid>
+*/}
+
+(Replace `<Grid>`/`<Card>` with real components or import from your `components/` directory)
 
 ---
 
 ## Future Outlook: 2026–2030
 
 ### Prediction 1: The Rise of Data Quantum Computing
+
 - **2026**: First quantum-safe encryption in Apache Kafka  
 - **2028**: Hybrid quantum-classical ML feature stores  
-- **2030**: Petabyte-scale quantum annealing for optimization
+- **2030**: Petabyte-scale quantum annealing for optimization  
 
 ### Prediction 2: Ethical Engineering Mandates
+
 ```python
 # 2027 EU Data Ethics Directive Compliance
 class Dataset:
@@ -228,13 +247,15 @@ class Dataset:
 ```
 
 ### Prediction 3: Autonomous Data Systems
+
 - **Self-healing pipelines**: Auto-rollback + patching via LLMs  
 - **AI data stewards**: GPT-7 powered governance bots  
-- **Dynamic SLAs**: Real-time contract renegotiation
+- **Dynamic SLAs**: Real-time contract renegotiation  
 
 ---
 
 ## Strategic Roadmap for Organizations
+
 ```roadmap
 title Data Engineering 2025 Adoption Path
 2023 Q4: 
@@ -254,6 +275,7 @@ title Data Engineering 2025 Adoption Path
 ---
 
 ## Recommended Resources
+
 1. **Books**:  
    - *Data Mesh in Practice* (O'Reilly, 2024)  
    - *Streaming Systems* (2nd Ed., 2025)  
@@ -264,7 +286,6 @@ title Data Engineering 2025 Adoption Path
 
 3. **Communities**:  
    - Data Engineering Council (DEC)  
-   - Streaming Systems Meetup (Global)
+   - Streaming Systems Meetup (Global)  
 
 ---
-
