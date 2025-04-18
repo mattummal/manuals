@@ -1,0 +1,229 @@
+# **SQL Data Wrangling Cheat Sheet**
+
+---
+
+## **1. Selecting Data**
+```sql
+-- Select all columns
+SELECT * FROM table_name;
+
+-- Select specific columns
+SELECT column1, column2 FROM table_name;
+
+-- Select distinct values
+SELECT DISTINCT column1 FROM table_name;
+
+-- Rename a column
+SELECT column1 AS new_name FROM table_name;
+```
+
+---
+
+## **2. Filtering Rows**
+```sql
+-- Filter rows with a condition
+SELECT * FROM table_name
+WHERE column1 > 10;
+
+-- Multiple conditions
+SELECT * FROM table_name
+WHERE column1 > 10 AND column2 < 5;
+
+-- Using OR
+SELECT * FROM table_name
+WHERE column1 = 'value1' OR column2 = 'value2';
+
+-- Filter with NULL values
+SELECT * FROM table_name
+WHERE column1 IS NULL;
+
+-- Filter with NOT NULL
+SELECT * FROM table_name
+WHERE column1 IS NOT NULL;
+```
+
+---
+
+## **3. Sorting Data**
+```sql
+-- Order rows in ascending order
+SELECT * FROM table_name
+ORDER BY column1 ASC;
+
+-- Order rows in descending order
+SELECT * FROM table_name
+ORDER BY column1 DESC;
+
+-- Order by multiple columns
+SELECT * FROM table_name
+ORDER BY column1 ASC, column2 DESC;
+```
+
+---
+
+## **4. Aggregating Data**
+```sql
+-- Basic Aggregation
+SELECT COUNT(*) AS total_rows FROM table_name;
+SELECT AVG(column1) AS average_value FROM table_name;
+SELECT SUM(column1) AS total_sum FROM table_name;
+
+-- Group By
+SELECT column1, COUNT(*) AS count
+FROM table_name
+GROUP BY column1;
+
+-- Group By with Multiple Aggregations
+SELECT column1, AVG(column2) AS avg_value, MAX(column3) AS max_value
+FROM table_name
+GROUP BY column1;
+
+-- Filter Groups with HAVING
+SELECT column1, COUNT(*) AS count
+FROM table_name
+GROUP BY column1
+HAVING COUNT(*) > 10;
+```
+
+---
+
+## **5. Joining Tables**
+```sql
+-- Inner Join
+SELECT t1.column1, t2.column2
+FROM table1 t1
+INNER JOIN table2 t2
+ON t1.key = t2.key;
+
+-- Left Join
+SELECT t1.column1, t2.column2
+FROM table1 t1
+LEFT JOIN table2 t2
+ON t1.key = t2.key;
+
+-- Right Join
+SELECT t1.column1, t2.column2
+FROM table1 t1
+RIGHT JOIN table2 t2
+ON t1.key = t2.key;
+
+-- Full Outer Join
+SELECT t1.column1, t2.column2
+FROM table1 t1
+FULL OUTER JOIN table2 t2
+ON t1.key = t2.key;
+```
+
+---
+
+## **6. Modifying Data**
+```sql
+-- Insert Data
+INSERT INTO table_name (column1, column2)
+VALUES ('value1', 'value2');
+
+-- Update Data
+UPDATE table_name
+SET column1 = 'new_value'
+WHERE column2 = 'condition';
+
+-- Delete Data
+DELETE FROM table_name
+WHERE column1 = 'condition';
+```
+
+---
+
+## **7. Creating and Altering Tables**
+```sql
+-- Create a New Table
+CREATE TABLE table_name (
+    column1 INT,
+    column2 VARCHAR(255),
+    column3 DATE
+);
+
+-- Add a New Column
+ALTER TABLE table_name
+ADD column4 BOOLEAN;
+
+-- Drop a Column
+ALTER TABLE table_name
+DROP COLUMN column4;
+
+-- Rename a Table
+ALTER TABLE old_table_name
+RENAME TO new_table_name;
+```
+
+---
+
+## **8. Working with Dates**
+```sql
+-- Extract Year, Month, Day
+SELECT YEAR(date_column) AS year,
+       MONTH(date_column) AS month,
+       DAY(date_column) AS day
+FROM table_name;
+
+-- Filter by Date Range
+SELECT * FROM table_name
+WHERE date_column BETWEEN '2023-01-01' AND '2023-12-31';
+
+-- Add/Subtract Days
+SELECT date_column + INTERVAL 7 DAY AS next_week
+FROM table_name;
+
+SELECT date_column - INTERVAL 7 DAY AS last_week
+FROM table_name;
+```
+
+---
+
+## **9. String Operations**
+```sql
+-- Convert to Uppercase
+SELECT UPPER(column1) AS upper_value FROM table_name;
+
+-- Convert to Lowercase
+SELECT LOWER(column1) AS lower_value FROM table_name;
+
+-- Substring
+SELECT SUBSTRING(column1, 1, 5) AS substring_value FROM table_name;
+
+-- Replace
+SELECT REPLACE(column1, 'old', 'new') AS replaced_value FROM table_name;
+
+-- Concatenate Strings
+SELECT CONCAT(column1, ' ', column2) AS full_value FROM table_name;
+```
+
+---
+
+## **10. Exporting Data**
+```sql
+-- Export a Table to a CSV File (MySQL Example)
+SELECT * FROM table_name
+INTO OUTFILE '/path/to/output.csv'
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n';
+```
+
+---
+
+## **11. Debugging and Quick Checks**
+```sql
+-- Check for Duplicates
+SELECT column1, COUNT(*)
+FROM table_name
+GROUP BY column1
+HAVING COUNT(*) > 1;
+
+-- Check Table Schema
+DESCRIBE table_name;
+
+-- Check Table Size
+SELECT COUNT(*) AS total_rows FROM table_name;
+```
+
+---
