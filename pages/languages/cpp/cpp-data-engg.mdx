@@ -1,7 +1,11 @@
+---
+title: Data Engineering with C++: High-Performance Pipelines
+date: 2025-04-20
+---
 
 Data engineering is often associated with languages like Python or Java, but C++ offers unmatched performance, control, and efficiency for high-throughput, low-latency data systems. In this blog, we’ll walk through how to build fast and efficient data pipelines using C++.
 
-## Why C++ for Data Engineering?
+## 🚀 Why C++ for Data Engineering?
 
 - **Blazing Speed**: C++ is close to the metal—perfect for performance-critical tasks.
 - **Deterministic Memory Management**: Unlike GC-based languages, C++ gives you fine-grained control.
@@ -9,7 +13,7 @@ Data engineering is often associated with languages like Python or Java, but C++
 
 ---
 
-## Project Structure
+## 🧱 Project Structure
 
 ```
 data-pipeline-cpp/
@@ -37,7 +41,7 @@ target_include_directories(DataPipeline PRIVATE include)
 
 ---
 
-## Step 2: Reading CSV Data
+## 📥 Step 2: Reading CSV Data
 
 ### `pipeline.hpp`
 ```cpp
@@ -111,7 +115,7 @@ int main() {
 
 ---
 
-## Performance Benchmarking
+## ⚡ Performance Benchmarking
 
 Use `time ./DataPipeline` or integrate with [Google Benchmark](https://github.com/google/benchmark) for micro-benchmarks.
 
@@ -127,7 +131,7 @@ target_link_libraries(DataPipeline benchmark::benchmark)
 
 ---
 
-## Multi-threading with `std::thread`
+## 🔄 Multi-threading with `std::thread`
 
 ```cpp
 #include <thread>
@@ -147,7 +151,7 @@ t2.join();
 
 ---
 
-## Kafka Integration (Consumer Example)
+## 🔌 Kafka Integration (Consumer Example)
 
 Use `librdkafka`:
 ```bash
@@ -191,7 +195,7 @@ void consume_kafka() {
 
 ---
 
-## Testing
+## 🧪 Testing
 
 Use `Catch2`:
 ```bash
@@ -212,7 +216,7 @@ TEST_CASE("Value Scaling") {
 
 ---
 
-## Deployment: AWS S3
+## 🌐 Deployment: AWS S3
 
 Use `libcurl` for uploading to S3:
 
@@ -239,7 +243,7 @@ void upload_to_s3(const std::string& filename) {
 
 ---
 
-## Final Thoughts
+## 🧠 Final Thoughts
 
 C++ is a powerful but often overlooked option in the data engineering stack. With careful architecture, multi-threading, and integration with modern tools, you can achieve robust and performant pipelines for even the most demanding workloads.
 
