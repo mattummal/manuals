@@ -1,42 +1,83 @@
-# Visual Studio Code Extensions
+# VSCode Extensions for Backend Engineering & Systems Programming
 
-Here is my extension list, also a scale of usage (1-5) meaning how often I use it.
+Here’s my current list of **Visual Studio Code extensions**, with a **usage scale from 1 to 5**, indicating how often I use each one. This list is tailored for backend engineering with **Azure, Rust, C++, Python, Scala**, and system-level or cloud-native workflows.
 
-## Editor
+---
 
-These extensions are generally for text editing that increases editing workflow and are not language specific.
+## 🛠️ General Editor & Workflow Enhancers
 
-| Extensions                                                                                                     | Scale of usage (1-5) | Description                                                                                                                                       |
-| -------------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Better Comments](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)                  | 4                    | Gives different color highlight for different comment type                                                                                        |
-| [Advanced New File](https://marketplace.visualstudio.com/items?itemName=patbenatar.advanced-new-file)          | 5                    | Create a new file on a specific folder just by keystroke, I mapped `⌘ + N` to this extension                                                      |
-| [Bracketeer](https://marketplace.visualstudio.com/items?itemName=pustelto.bracketeer)                          | 4                    | Useful to change bracket, or remove the bracket, select text inside a quote, change quote (", ', \`)                                              |
-| [Dracula Theme](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula)               | Default Theme        | Best dark theme for me. I even use it on my website                                                                                               |
-| [File Utils](https://marketplace.visualstudio.com/items?itemName=sleistner.vscode-fileutils)                   | 5                    | A convenient way of creating, duplicating, moving, renaming and deleting files and directories                                                    |
-| [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)                                 | 2                    | A git extension that show git status on the line                                                                                                  |
-| [Indent Rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)                   | 4                    | Makes indentation easier to read. You can only use bracket color, but I prefer this one                                                           |
-| [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)           | Default Icons        | Great icons, it has a lot of icons for folders too                                                                                                |
-| [Case Preserve](https://marketplace.visualstudio.com/items?itemName=Cardinal90.multi-cursor-case-preserve)     | 3                    | This one is super useful, when you select occurrences (`⌘ + D`) and they have different cases, it will preserve the case when you change the text |
-| [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)                         | 5                    | This extension is for formatting code, it will format the code when you save it                                                                   |
-| [Tab Out](https://marketplace.visualstudio.com/items?itemName=albert.TabOut)                                   | 3                    | Escape bracket using tabs, similar to eclipse editor                                                                                              |
-| [VS Sequential Number](https://marketplace.visualstudio.com/items?itemName=neptunedesign.vs-sequential-number) | 3                    | Input sequential number in the across multiple cursors. This is unexpectedly useful                                                               |
+| Extension                                                                                                    | Usage | Notes                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------ | ----- | ----------------------------------------------------------------------------------------------------------------- |
+| [Better Comments](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments)            | 4     | Color-coded comment tags like `// TODO`, `// NOTE`, etc. Very handy across all languages.                        |
+| [Advanced New File](https://marketplace.visualstudio.com/items?itemName=patbenatar.advanced-new-file)        | 5     | Easily create files with path hints, e.g., `src/utils/log.rs`.                                                   |
+| [Bracket Pair Colorizer 2](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2) | 4     | Helps visually match nested brackets—super helpful in Rust or deeply nested code.                                |
+| [Dracula Theme](https://marketplace.visualstudio.com/items?itemName=dracula-theme.theme-dracula)             | —     | Clean, dark, eye-comfortable theme for long coding hours.                                                        |
+| [File Utils](https://marketplace.visualstudio.com/items?itemName=sleistner.vscode-fileutils)                 | 5     | Quickly rename, duplicate, or move files with shortcuts.                                                         |
+| [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)                               | 3     | Git annotations inline and in file history. Helpful for tracking backend service changes.                        |
+| [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)                       | 4     | I use it mainly for JSON, Markdown, and frontend config files.                                                   |
+| [Indent Rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)                 | 3     | Great for Python or YAML indentation levels.                                                                     |
+| [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) | 2     | Useful for catching typos in docs or code comments.                                                              |
 
-## HTML, CSS, JS
+---
 
-| Extensions                                                                                              | Scale of usage (1-5) | Description                                                                                       |
-| ------------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------- |
-| [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag)    | 4                    | Auto rename paired HTML tag, you can also use the VSCode built-in, but it is kinda buggy in React |
-| [Color Highlight](https://marketplace.visualstudio.com/items?itemName=naumovs.color-highlight)          | 4                    | Highlight web colors (hex, HSL, RGB, etc)                                                         |
-| [CSS Peek](https://marketplace.visualstudio.com/items?itemName=pranaygp.vscode-css-peek)                | 3                    | Peek CSS id and class definition                                                                  |
-| [HTML CSS Support](https://marketplace.visualstudio.com/items?itemName=ecmel.vscode-html-css)           | 3                    | CSS intellisense for HTML                                                                         |
-| [Turbo Console Log](https://marketplace.visualstudio.com/items?itemName=ChakrounAnas.turbo-console-log) | 5                    | Use this **all the time**, will add console log with a keystroke                                  |
+## 🐍 Python & Data Engineering
 
-## React, Next.js, Tailwind CSS
+| Extension                                                                                             | Usage | Notes                                                                                 |
+| ------------------------------------------------------------------------------------------------------ | ----- | ------------------------------------------------------------------------------------- |
+| [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)                         | 5     | Official Python support with IntelliSense, Jupyter, debug configs, etc.              |
+| [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)               | 5     | Fast type-checking and enhanced IntelliSense for large data pipelines.               |
+| [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)                      | 3     | I use this occasionally to prototype ETL logic or transformation flows.              |
+| [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)              | 4     | Essential for containerized data engineering and ML workflows.                       |
+| [Azure Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack)   | 4     | Includes Azure CLI, blob storage explorer, and pipeline helpers.                     |
 
-Extensions for my current go-to workflow
+---
 
-| Extensions                                                                                                 | Scale of usage (1-5) | Description                                                                 |
-| ---------------------------------------------------------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------- |
-| [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) | 5                    | Auto complete for Tailwind CSS classes                                      |
-| [Quokka.js](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode)                   | 3                    | JS and TS playground, very useful for testing map function, etc             |
-| [Github Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)                       | 3                    | Very useful, but my 2013 Macbook Air sometimes can't handle the computation |
+## 🦀 Rust
+
+| Extension                                                                                      | Usage | Notes                                                                                   |
+| ----------------------------------------------------------------------------------------------- | ----- | ---------------------------------------------------------------------------------------- |
+| [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)   | 5     | Lightning-fast Rust tooling: IntelliSense, inline docs, and type hints.                 |
+| [crates](https://marketplace.visualstudio.com/items?itemName=serayuzgur.crates)                | 4     | Manages dependencies in `Cargo.toml`, shows versions and docs inline.                   |
+| [CodeLLDB](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb)            | 4     | Debug Rust binaries (especially for performance profiling or backend service debugging). |
+
+---
+
+## ⚙️ C++ & Systems Engineering
+
+| Extension                                                                                 | Usage | Notes                                                                               |
+| ------------------------------------------------------------------------------------------ | ----- | ----------------------------------------------------------------------------------- |
+| [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)           | 5     | Microsoft’s official C++ extension for IntelliSense, debug, and build config.       |
+| [CMake Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)  | 4     | If you're doing C++ builds with CMake, this one is essential.                       |
+| [Include Autocomplete](https://marketplace.visualstudio.com/items?itemName=ajshort.include-autocomplete) | 3 | Auto-completes `#include` directives and helps with large codebases.                |
+
+---
+
+## ☁️ Azure Cloud & DevOps
+
+| Extension                                                                                     | Usage | Notes                                                                                 |
+| ---------------------------------------------------------------------------------------------- | ----- | ------------------------------------------------------------------------------------- |
+| [Azure CLI Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli)     | 4     | Syntax highlighting and IntelliSense for Azure CLI commands.                         |
+| [Azure Resource Manager (ARM) Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) | 3 | Useful if you're defining infra via ARM templates or bicep.                         |
+| [Terraform](https://marketplace.visualstudio.com/items?itemName=HashiCorp.terraform)           | 4     | Infrastructure-as-Code using Terraform (useful for Azure VMs, storage, etc.).        |
+
+---
+
+## 🧪 Scala & JVM Ecosystem
+
+| Extension                                                                                      | Usage | Notes                                                                                           |
+| ----------------------------------------------------------------------------------------------- | ----- | ----------------------------------------------------------------------------------------------- |
+| [Metals](https://marketplace.visualstudio.com/items?itemName=scalameta.metals)                 | 4     | Language server for Scala. Works well with SBT and Scala 3.                                     |
+| [Scala Syntax (official)](https://marketplace.visualstudio.com/items?itemName=scala-lang.scala) | 3     | Lightweight syntax highlighting if you’re not using Metals.                                     |
+| [Gradle for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-gradle)   | 3     | For Scala projects that use Gradle over SBT.                                                     |
+
+---
+
+## 🧠 AI, Productivity & Utilities
+
+| Extension                                                                                      | Usage | Notes                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----- | ------------------------------------------------------------------------------------------ |
+| [Github Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)           | 4     | Speeds up repetitive boilerplate coding across all languages.                             |
+| [TabOut](https://marketplace.visualstudio.com/items?itemName=albert.TabOut)                    | 3     | Quickly escape brackets/quotes with the `Tab` key—surprisingly useful in C++ and Rust.    |
+| [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) | 3 | Makes README and `.mdx` writing a breeze with live preview and TOC generation.            |
+
+---

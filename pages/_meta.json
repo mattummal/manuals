@@ -5,7 +5,7 @@
   "languages": "Languages",
   "github": "GitHub",
   "libraries": "Libraries",
-  "dotfiles": "VSCode Extensions",
+  "extension": "Extensions",
   "unix": "Unix",
   "contact": {
     "title": "Contact ↗",
