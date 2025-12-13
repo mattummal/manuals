@@ -23,37 +23,65 @@ plugins=(
 )
 ```
 
-## Aliases
+## Top 25 Zsh Aliases Demonstration
 
-```bash copy filename=".zshrc"
-# VSCode Alias
-alias e="code ."
-alias r="code -r ."
+A curated list of handy Zsh aliases for faster navigation, git operations, and dev workflow.
 
-# Development Alias
-alias s="BROWSER=none yarn start"
-alias sb="BROWSER=none yarn sb"
-alias b="yarn build"
-alias d="yarn dev"
-alias t="yarn typecheck"
-alias bs="b && s"
-alias gprm='git pull --rebase origin $(git_main_branch)'
+---
 
-# GitHub Alias
-alias gprc="gh pr create"
-alias gprw="gh pr create -w --body-file .github/pull_request_template.md"
-alias gprf="gh pr create -f"
-alias gis="gh issue create"
-alias gism="gh issue create -a 'theodorusclarence'"
+### **Navigation Aliases**
 
-# Flow Alias
-alias gcmr="bash /Users/Clarence/flow/main-and-delete-branch.sh"
-alias emr="bash /Users/Clarence/flow/git-emergency.sh"
-alias vc="/bin/bash '/Users/Clarence/flow/vc.sh'"
-alias gv="gh repo view --web"
-alias prv="gh pr view --web"
+| Alias | Command | Description |
+|-------|---------|-------------|
+| `=` | `cd -` | Go to previous directory |
+| `1` | `cd +1` | Go 1 directory forward in stack |
+| `2` | `cd +2` | Go 2 directories forward |
+| `d` | `fasd -d` | Quickly jump to frequently used directories |
+| `zz` | `fasd_cd -d -i` | Interactive directory jump |
 
-# Captive Apple
-# @see https://github.com/unixorn/tumult.plugin.zsh/blob/main/bin/unfuck-captive-portal
-alias captive='exec open -a "Safari" "http://captive.apple.com/hotspot-detect.html"'
-```
+---
+
+### **Git Aliases**
+
+| Alias | Command | Description |
+|-------|---------|-------------|
+| `g` | `git` | Base git command |
+| `gs` | `git status` | Check git status |
+| `gco` | `git checkout` | Checkout a branch or file |
+| `gca` | `git commit --verbose --all` | Commit all changes verbosely |
+| `gp` | `git push` | Push commits to remote |
+
+---
+
+### **Python / Dev Aliases**
+
+| Alias | Command | Description |
+|-------|---------|-------------|
+| `python` | `python -m IPython --no-confirm-exit` | Start IPython REPL |
+| `pip` | `python -m pip` | Use pip for package management |
+| `pytest` | `python -m pytest -vv` | Run tests with verbose output |
+| `mypy` | `python -m mypy` | Run type checking |
+| `ipdb` | `python -m ipdb` | Debug Python scripts interactively |
+
+---
+
+### **Utilities / Tools**
+
+| Alias | Command | Description |
+|-------|---------|-------------|
+| `_` | `sudo` | Run commands as superuser |
+| `la` | `ll -A` | List all files with details |
+| `df` | `df -kh` | Show disk usage in human-readable format |
+| `du` | `du -kh` | Show directory sizes |
+| `topc` | `htop -s PERCENT_CPU` | Monitor CPU usage interactively |
+| `topm` | `htop -s PERCENT_MEM` | Monitor memory usage interactively |
+| `watchgpu` | `watch --color -n0.2 "gpustat --color || gpustat"` | Watch GPU usage live |
+| `o` | `open` | Open files or directories (macOS) |
+| `e` | `${(z)VISUAL:-${(z)EDITOR}}` | Open editor (VISUAL or EDITOR env) |
+| `v` | `vim` | Open Vim/nvim editor |
+| `tmux` | `tmux-wrapper` | Start or attach tmux session |
+
+---
+
+> These aliases are sourced from a curated Zsh setup and showcase how **navigation, git workflow, Python development, and system monitoring** can be made faster in the terminal.
+---
